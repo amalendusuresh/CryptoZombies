@@ -23,14 +23,14 @@ contract ZombieFactory {
     mapping (address => uint) ownerZombieCount; // mapping called ownerZombieCount 
 
     // added msg.sender
-    function _createZombie(string memory _name, uint _dna) private {
+    function _createZombie(string memory _name, uint _dna) internal { // Changed from private to internal (inheritance property)
         uint id = zombies.push(Zombie(_name, _dna)) - 1; new zombie's id
         zombieToOwner[id] = msg.sender; // zombieToOwner mapping to store msg.sender under id
         ownerZombieCount[msg.sender]++; // increase ownerZombieCount
         emit NewZombie(id, _name, _dna); // event emit
     }
-
-    function _generateRandomDna(string memory _str) private view returns (uint) {
+    
+     function _generateRandomDna(string memory _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
     }
