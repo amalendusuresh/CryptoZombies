@@ -30,8 +30,8 @@ contract ZombieFeeding is ZombieFactory {
   function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
     require(msg.sender == zombieToOwner[_zombieId]); // require statement to verify that msg.sender is equal to this zombie's owner
     Zombie storage myZombie = zombies[_zombieId]; // Declare a local Zombie named myZombie
-    _targetDna = _targetDna % dnaModulus; // Zombie DNA 
-    uint newDna = (myZombie.dna + _targetDna) / 2;
+    _targetDna = _targetDna % dnaModulus; // Zombie DNA  - set _targetDna equal to _targetDna % dnaModulus
+    uint newDna = (myZombie.dna + _targetDna) / 2; // declare a uint named newDna, and set it equal to the average of myZombie's DNA and _targetDna. 
     if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) { // comparing the keccak256 hashes of _species and the string "kitty"
        newDna = newDna - newDna % 100 + 99; // replace the last 2 digits of DNA with 99 (logic)
     }
