@@ -22,7 +22,7 @@ contract KittyInterface {
 // Inheritance
 contract ZombieFeeding is ZombieFactory {
 
-  // Initialize kittyContract here using `ckAddress` from above
+  // Initialize kittyContract using `ckAddress` 
   address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d; // initialized with ckAddress
   KittyInterface kittyContract = KittyInterface(ckAddress); // KittyInterface named kittyContract
 
