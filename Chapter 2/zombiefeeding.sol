@@ -1,5 +1,6 @@
 pragma solidity >=0.5.0 <0.6.0;
 
+// Importing
 import "./zombiefactory.sol";
 
 contract KittyInterface {
@@ -17,16 +18,17 @@ contract KittyInterface {
   );
 }
 
+// Inheritance
 contract ZombieFeeding is ZombieFactory {
 
   address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
   KittyInterface kittyContract = KittyInterface(ckAddress);
 
-  // Modify function definition here:
+  // Public function
   function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
-    require(msg.sender == zombieToOwner[_zombieId]);
-    Zombie storage myZombie = zombies[_zombieId];
-    _targetDna = _targetDna % dnaModulus;
+    require(msg.sender == zombieToOwner[_zombieId]); // require statement to verify that msg.sender is equal to this zombie's owner
+    Zombie storage myZombie = zombies[_zombieId]; // Declare a local Zombie named myZombie
+    _targetDna = _targetDna % dnaModulus; // Zombie DNA 
     uint newDna = (myZombie.dna + _targetDna) / 2;
 
 
