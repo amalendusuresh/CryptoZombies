@@ -12,11 +12,16 @@ contract ZombieFactory is Ownable{
     // varibles
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
+    uint cooldownTime = 1 days; // `cooldownTime`
+
 
     // struct
     struct Zombie {
         string name;
         uint dna;
+        uint32 level; // for level up over time and get access to more abilities.
+        uint32 readyTime; // an amount of time a zombie has to wait after feeding or attacking(`cooldownTime`)
+
     }
     
     // array
@@ -28,7 +33,7 @@ contract ZombieFactory is Ownable{
 
     // added msg.sender
     function _createZombie(string memory _name, uint _dna) internal { // Changed from private to internal (inheritance property)
-        uint id = zombies.push(Zombie(_name, _dna)) - 1; new zombie's id
+        uint id = zombies.push(Zombie(_name, _dna, 1,  uint32(now + cooldownTime))) - 1; new zombie's id (added level, readyTime arguments)
         zombieToOwner[id] = msg.sender; // zombieToOwner mapping to store msg.sender under id
         ownerZombieCount[msg.sender]++; // increase ownerZombieCount
         emit NewZombie(id, _name, _dna); // event emit
