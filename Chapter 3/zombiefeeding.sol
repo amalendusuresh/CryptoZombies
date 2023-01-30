@@ -1,5 +1,6 @@
 pragma solidity >=0.5.0 <0.6.0;
 
+// Inheritance
 import "./zombiefactory.sol";
 
 contract KittyInterface {
@@ -21,13 +22,13 @@ contract ZombieFeeding is ZombieFactory {
 
   // 1. Remove this: address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
   
-  // 2. Change this to just a declaration:
-  KittyInterface kittyContract;
+   KittyInterface kittyContract;  // declaration:
 
-  // 3. Add setKittyContractAddress method here
-  function setKittyContractAddress(address _address) external {
-    kittyContract = KittyInterface(_address);
+ // setKittyContractAddress - external function 
+  function setKittyContractAddress(address _address) external onlyOwner { // added onlyOwner modifier
+    kittyContract = KittyInterface(_address); // kittyContract equal to KittyInterface(_address).
   }
+
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
 
