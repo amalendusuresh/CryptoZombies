@@ -3,6 +3,9 @@ pragma solidity >=0.5.0 <0.6.0;
 // Importing Ownable
 import "./ownable.sol";
 
+/// @title A contract that create ZombieFactory
+/// @author Amalendu Suresh
+
 // Inheriting Ownable
 contract ZombieFactory is Ownable{
     
