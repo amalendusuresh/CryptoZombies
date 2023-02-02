@@ -2,6 +2,9 @@
 
 import "./zombiefeeding.sol";
 
+/// @title A contract that create ZombieFactory
+/// @author Amalendu Suresh
+
 contract ZombieHelper is ZombieFeeding {
 
  // Modifier 
