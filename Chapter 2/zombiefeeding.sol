@@ -3,6 +3,9 @@ pragma solidity >=0.5.0 <0.6.0;
 // Importing
 import "./zombiefactory.sol";
 
+/// @title A contract that create ZombieFactory
+/// @author Amalendu Suresh
+
 // Interacting with other contracts(Interface)
 contract KittyInterface {
   function getKitty(uint256 _id) external view returns (
