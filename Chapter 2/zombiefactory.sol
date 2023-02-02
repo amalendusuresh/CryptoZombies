@@ -1,5 +1,8 @@
 pragma solidity >=0.5.0 <0.6.0;
 
+/// @title A contract that create ZombieFactory
+/// @author Amalendu Suresh
+
 contract ZombieFactory {
     
     //event 
